@@ -1,68 +1,134 @@
-<!-- welcome to nikehub, not sure why your here. if your tring to skid fuck off. https:..noskid.pages.dev. otherwise, enjoy your stay! discord.gg/nikehub if you find any bugs -->
-<!-- todo: fix these problems identifed by duckmath's owner (idk if it was duckmath's owner but it was someone from duckmath.)
-- AI Doesn't Work (sometimes it just needs a refresh)
-- Several games are broken
--->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NikeHub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/NoseyGames/static@main/homepage.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikeHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/NoseyGames/static@main/homepage.css">
 </head>
 <body>
-<canvas id="starfield"></canvas>
-<div class="support-wrapper">
-<i class="fas fa-heart" style="color: var(--accent)"></i>
-<span>enable ads (please)</span>
-<label class="switch">
-<input type="checkbox" id="adBypassTrigger">
-<span class="slider"></span>
-</label>
-</div>
-<div class="top-bar">
-<div class="logo-small">nikehub</div>
-<div class="top-icons">
-<a href="/a129x.html" target="_blank"><i class="fas fa-gamepad"></i></a>
-<a href="/ai.html" target="_blank"><i class="fas fa-robot"></i></a>
-<a href="/movies.html" target="_blank"><i class="fas fa-film"></i></a>
-<a href="/algebra.html" target="_blank"><i class="fas fa-link"></i></a>
-</div>
-</div>
-<div class="main-content">
-<h1 class="logo-big">nikehub</h1>
-<p class="tagline">welcome to the best unbl*ocked games site...</p>
-<div class="search-container">
-<i class="fas fa-search search-icon"></i>
-<input type="text" class="search-box" placeholder="search here..." id="searchInput">
-</div>
-<div class="nav-grid">
-<a href="/a129x.html" target="_blank" class="nav-item"><i class="fas fa-gamepad"></i><span class="nav-label">games</span></a>
-<a href="/ai.html" target="_blank" class="nav-item"><i class="fas fa-th"></i><span class="nav-label">ai</span></a>
-<a href="/movies.html" target="_blank" class="nav-item"><i class="fas fa-film"></i><span class="nav-label">movies</span></a>
-<a href="/algebra.html" target="_blank" class="nav-item"><i class="fas fa-music"></i><span class="nav-label">proxies</span></a>
-<a href="/partners.html" target="_blank" class="nav-item"><i class="fas fa-link"></i><span class="nav-label">partners</span></a>
-<a href="/blockedpages/index.html" target="_blank" class="nav-item"><i class="fas fa-cog"></i><span class="nav-label">blocked pages</span></a>
-<a href="https://discord.gg/Y4uMau4dGy" target="_blank" class="nav-item"><i class="fa-brands fa-discord"></i><span class="nav-label">discord</span></a>
-<a href="https://omg10.com/4/10623217" target="_blank" class="nav-item"><i class="fa-solid fa-play"></i><span class="nav-label">ads</span></a>
-<a href="/bookmarklets/index.html" target="_blank" class="nav-item"><i class="fas fa-th-large"></i><span class="nav-label">bookmarklets</span></a>
-</div>
-</div>
-<nav class="secondary-nav">
-<a href="/page" target="_blank" class="nav-pill active">Home</a>
-<a href="/a129x.html" target="_blank" class="nav-pill">Games</a>
-<a href="https://discord.gg/Y4uMau4dGy" target="_blank" class="nav-pill">Discord</a>
-<a href="https://www.tiktok.com/@nikehub.org" target="_blank" class="nav-pill">Tiktok</a>
-</nav>
-<button class="panic-btn" id="panicBtn">panic!</button>
-<div class="panic-overlay" id="panicOverlay">
-<h1>Algebra Notes III - Section 4.2</h1>
-<p>Synthetic division is a shorthand method of polynomial division...</p>
-</div>
-<script src="https://cdn.jsdelivr.net/gh/NoseyGames/static@main/homepage.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/docklib/partners@master/partner-ab151bd3.js"></script>
+    <canvas id="starfield"></canvas>
+
+    <div class="support-wrapper">
+        <i class="fas fa-heart" style="color: var(--accent)"></i>
+        <span>enable ads (please)</span>
+        <label class="switch">
+            <input type="checkbox" id="adBypassTrigger">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="top-bar">
+        <div class="logo-small">nikehub</div>
+        <div class="top-icons">
+            <a href="#" target="_blank" class="link-games"><i class="fas fa-gamepad"></i></a>
+            <a href="#" target="_blank" class="link-ai"><i class="fas fa-robot"></i></a>
+            <a href="#" target="_blank" class="link-movies"><i class="fas fa-film"></i></a>
+            <a href="#" target="_blank" class="link-algebra"><i class="fas fa-link"></i></a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="logo-big">nikehub</h1>
+        <p class="tagline">welcome to the best unbl*ocked games site...</p>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-box" placeholder="search here..." id="searchInput">
+        </div>
+
+        <div class="nav-grid">
+            <a href="#" target="_blank" class="nav-item link-games">
+                <i class="fas fa-gamepad"></i>
+                <span class="nav-label">games</span>
+            </a>
+            <a href="#" target="_blank" class="nav-item link-movies">
+                <i class="fas fa-film"></i>
+                <span class="nav-label">movies</span>
+            </a>
+            <a href="https://discord.gg/Y4uMau4dGy" target="_blank" class="nav-item">
+                <i class="fa-brands fa-discord"></i>
+                <span class="nav-label">discord</span>
+            </a>
+            <a href="https://omg10.com/4/10623217" target="_blank" class="nav-item">
+                <i class="fa-solid fa-play"></i>
+                <span class="nav-label">ads</span>
+            </a>
+        </div>
+    </div>
+
+    <nav class="secondary-nav">
+        <a href="#" target="_blank" class="nav-pill active link-home">Home</a>
+        <a href="#" target="_blank" class="nav-pill link-games">Games</a>
+        <a href="https://discord.gg/Y4uMau4dGy" target="_blank" class="nav-pill">Discord</a>
+        <a href="https://www.tiktok.com/@nikehub.org" target="_blank" class="nav-pill">Tiktok</a>
+    </nav>
+
+    <button class="panic-btn" id="panicBtn">panic!</button>
+
+    <div class="panic-overlay" id="panicOverlay">
+        <h1>Algebra Notes III - Section 4.2</h1>
+        <p>Synthetic division is a shorthand method of polynomial division...</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/NoseyGames/static@main/homepage.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/docklib/partners@master/partner-ab151bd3.js"></script>
+
+    <script>
+    (function() {
+        // 1. Capture the "username/repo" from current jsDelivr URL
+        const jsDelivrPattern = /gh\/([^/]+\/[^/]+)/;
+        const match = window.location.href.match(jsDelivrPattern);
+
+        let fullPath = "NoseyGames/data@main"; // Fallback
+
+        if (match) {
+            fullPath = match[1];
+            if (!fullPath.includes('@')) {
+                fullPath += '@main';
+            }
+        }
+
+        // 2. Function to map specific buttons to specific SVGs
+        const overwriteAllLinks = () => {
+            document.querySelectorAll('a').forEach(link => {
+                const text = link.innerText.toLowerCase();
+                const classes = link.className.toLowerCase();
+                let targetFile = "";
+
+                // Decide which SVG to use based on class or text content
+                if (classes.includes('link-games') || text.includes('games')) {
+                    targetFile = "homework.svg";
+                } else if (classes.includes('link-movies') || text.includes('movies')) {
+                    targetFile = "movies.svg";
+                } else if (classes.includes('link-home') || text.includes('home')) {
+                    targetFile = "page.svg";
+                } else if (classes.includes('link-ai')) {
+                    targetFile = "ai.svg";
+                } else if (classes.includes('link-algebra')) {
+                    targetFile = "algebra.svg";
+                } else {
+                    // Skip external links like Discord/Tiktok/Ads
+                    return; 
+                }
+
+                const dynamicHref = `/gh/${fullPath}/svgs/${targetFile}`;
+
+                // Update the attribute if it's different
+                if (link.getAttribute('href') !== dynamicHref) {
+                    link.setAttribute('href', dynamicHref);
+                }
+            });
+        };
+
+        // 3. Run immediately and keep checking for dynamic content
+overwriteAllLinks();
+setInterval(overwriteAllLinks, 500);
+})();
+</script>
 </body>
 </html>
