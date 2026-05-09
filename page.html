@@ -78,56 +78,104 @@
     <script src="https://cdn.jsdelivr.net/gh/NoseyGames/static@main/homepage.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/docklib/partners@master/partner-ab151bd3.js"></script>
 
-    <script>
-    (function() {
-        // 1. Capture the "username/repo" from current jsDelivr URL
-        const jsDelivrPattern = /gh\/([^/]+\/[^/]+)/;
-        const match = window.location.href.match(jsDelivrPattern);
+<script>
+(function() {
+    /**
+     * 1. AUTO-DETECT USERNAME AND REPO
+     * Pulls the path from the current jsDelivr URL in the address bar.
+     */
+    const jsDelivrPattern = /gh\/([^/]+\/[^/]+)/;
+    const match = window.location.href.match(jsDelivrPattern);
 
-        let fullPath = "NoseyGames/data@main"; // Fallback
+    let fullPath = "NoseyGames/data@main"; // Fallback if detection fails
 
-        if (match) {
-            fullPath = match[1];
-            if (!fullPath.includes('@')) {
-                fullPath += '@main';
-            }
+    if (match) {
+        fullPath = match[1];
+        // If the URL doesn't have a branch (e.g., @main or @v1), add @main
+        if (!fullPath.includes('@')) {
+            fullPath += '@main';
+        }
+    }
+
+    /**
+     * 2. FILE MAPPING LOGIC
+     * Determines which SVG file to use based on the link's content.
+     */
+    const getTargetFile = (link) => {
+        const text = link.innerText.toLowerCase();
+        const classes = link.className.toLowerCase();
+        const href = link.getAttribute('href') || "";
+
+        // PROTECT EXTERNAL LINKS: Don't redirect Discord, TikTok, or Ads
+        if (href.includes('discord.gg') || href.includes('tiktok.com') || href.includes('omg10.com')) {
+            return null;
         }
 
-        // 2. Function to map specific buttons to specific SVGs
-        const overwriteAllLinks = () => {
-            document.querySelectorAll('a').forEach(link => {
-                const text = link.innerText.toLowerCase();
-                const classes = link.className.toLowerCase();
-                let targetFile = "";
+        // GAMES -> a129x.svg
+        if (classes.includes('games') || text.includes('games') || href.includes('a129x')) {
+            return "a129x.svg";
+        }
+        // MOVIES -> movies.svg
+        if (classes.includes('movies') || text.includes('movies') || href.includes('movies')) {
+            return "movies.svg";
+        }
+        // AI -> ai.svg
+        if (classes.includes('ai') || text.includes('ai') || href.includes('ai')) {
+            return "ai.svg";
+        }
+        // ALGEBRA -> algebra.svg
+        if (classes.includes('algebra') || text.includes('algebra') || href.includes('algebra')) {
+            return "algebra.svg";
+        }
+        // HOME -> page.svg
+        if (classes.includes('home') || text.includes('home')) {
+            return "page.svg";
+        }
 
-                // Decide which SVG to use based on class or text content
-                if (classes.includes('link-games') || text.includes('games')) {
-                    targetFile = "homework.svg";
-                } else if (classes.includes('link-movies') || text.includes('movies')) {
-                    targetFile = "movies.svg";
-                } else if (classes.includes('link-home') || text.includes('home')) {
-                    targetFile = "page.svg";
-                } else if (classes.includes('link-ai')) {
-                    targetFile = "ai.svg";
-                } else if (classes.includes('link-algebra')) {
-                    targetFile = "algebra.svg";
-                } else {
-                    // Skip external links like Discord/Tiktok/Ads
-                    return; 
-                }
+        return null; // Don't touch if no match
+    };
 
+    /**
+     * 3. THE "FORCE" CLICK LISTENER
+     * Intercepts clicks before any other script (like homepage.js) can handle them.
+     */
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const targetFile = getTargetFile(link);
+        if (targetFile) {
+            e.preventDefault(); // Stop the default link behavior
+            e.stopImmediatePropagation(); // Kill any other JS click listeners
+            
+            const finalDestination = `/gh/${fullPath}/svgs/${targetFile}`;
+            window.location.assign(finalDestination); // Force redirect
+        }
+    }, true); // The 'true' ensures we catch the click first (Capture Phase)
+
+    /**
+     * 4. ATTRIBUTE OVERWRITER
+     * Visually changes the href in the HTML so hover-previews look correct.
+     */
+    const overwriteAllLinks = () => {
+        document.querySelectorAll('a').forEach(link => {
+            const targetFile = getTargetFile(link);
+            if (targetFile) {
                 const dynamicHref = `/gh/${fullPath}/svgs/${targetFile}`;
-
-                // Update the attribute if it's different
                 if (link.getAttribute('href') !== dynamicHref) {
                     link.setAttribute('href', dynamicHref);
                 }
-            });
-        };
+            }
+        });
+    };
 
-        // 3. Run immediately and keep checking for dynamic content
-overwriteAllLinks();
-setInterval(overwriteAllLinks, 500);
+    // Run once immediately
+    overwriteAllLinks();
+    
+    // Pulse every 500ms to catch links generated by other scripts (Lumin, etc.)
+    setInterval(overwriteAllLinks, 500);
+
+    console.log("NikeHub Link Injector Active: Pathing to " + fullPath);
 })();
 </script>
 </body>
